@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         mFab.setOnClickListener {
             val wordSize = mAdapter.itemCount
             mAdapter.addWord("Word $wordSize")
-//            mAdapter.notifyDataSetChanged()
             mRecycler.smoothScrollToPosition(wordSize)
         }
     }
