@@ -10,8 +10,6 @@ import android.view.View
 import android.widget.EditText
 import android.support.v4.app.ShareCompat
 
-
-
 class MainActivity : AppCompatActivity() {
     private val mWebsiteEdit by lazy { findViewById<EditText>(R.id.website_edittext)}
     private val mLocationEdit by lazy {findViewById<EditText>(R.id.location_edittext)}
