@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         if (isChecked) {
 
                             long repeatInterval = AlarmManager.INTERVAL_FIFTEEN_MINUTES;
+                            repeatInterval = 10 * 1000;
 
                             long triggerTime = SystemClock.elapsedRealtime()
                                     + repeatInterval;
