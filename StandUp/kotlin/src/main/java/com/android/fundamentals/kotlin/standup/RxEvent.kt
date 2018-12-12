@@ -1,3 +1,3 @@
-package com.android.example.kotlin.notifyme
+package com.android.fundamentals.kotlin.standup
 
 class AlarmNotificationEvent
