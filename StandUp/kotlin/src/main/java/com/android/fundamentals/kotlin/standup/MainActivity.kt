@@ -13,8 +13,6 @@ import android.os.SystemClock
 import android.support.v4.app.NotificationCompat
 import android.widget.Toast
 import android.widget.ToggleButton
-import com.android.example.kotlin.notifyme.AlarmNotificationEvent
-import com.android.example.kotlin.notifyme.RxBus
 
 class MainActivity : AppCompatActivity() {
 
