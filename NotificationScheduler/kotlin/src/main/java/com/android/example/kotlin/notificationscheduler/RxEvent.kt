@@ -1,0 +1,3 @@
+package com.android.example.kotlin.notificationscheduler
+
+class AlarmNotificationEvent
