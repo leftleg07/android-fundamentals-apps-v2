@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.support.v4.app.NotificationCompat
+import android.widget.Toast
 import android.widget.ToggleButton
 import com.android.example.kotlin.notifyme.AlarmNotificationEvent
 import com.android.example.kotlin.notifyme.RxBus
@@ -46,12 +47,16 @@ class MainActivity : AppCompatActivity() {
 
         
         mAlarmToggle.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked) {
+            val toastMessage = if(isChecked) {
                 startAlarm()
+                getString(R.string.alarm_on_toast)
             } else {
                 mNotifyManager?.cancelAll()
                 mAlarmManager?.cancel(mAlarmPendingIntent)
+                getString(R.string.alarm_off_toast)
             }
+            // Show a toast to say the alarm is turned on or off.
+            Toast.makeText(this@MainActivity, toastMessage, Toast.LENGTH_SHORT).show()
         }
     }
 
