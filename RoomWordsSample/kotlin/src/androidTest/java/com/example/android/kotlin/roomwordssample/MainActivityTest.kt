@@ -5,12 +5,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.Intents.intending
 import androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasShortClassName
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.espresso.intent.rule.IntentsTestRule
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Before
@@ -71,6 +72,7 @@ class MainActivityTest {
         // We can also validate that an intent resolving to the "camera" activity has been sent out by our app
         intended(classComponent)
 
+        onView(withText("elephant")).check(matches(isDisplayed()))
         while (!intentsRule.activity.isFinishing) {
             sleep(1000)
         }

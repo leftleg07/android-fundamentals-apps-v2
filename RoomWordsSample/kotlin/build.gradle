@@ -34,6 +34,8 @@ android {
         androidTest.java.srcDirs += "src/test-common/java"
         test.java.srcDirs += "src/test-common/java"
     }
+    testOptions.unitTests.includeAndroidResources = true
+    testOptions.unitTests.returnDefaultValues = true
 }
 
 ext {
@@ -44,8 +46,8 @@ ext {
     constraintLayout_version = '1.1.0'
 
     junit_version = '1.2.50'
-    truth_tersion = '0.42'
-
+    truth_version = '0.42'
+    core_version = '1.1.0'
     runner_version = '1.1.0'
     espresso_version = '3.1.0'
 }
@@ -72,7 +74,7 @@ dependencies {
     // Test helpers for LiveData
     testImplementation "androidx.arch.core:core-testing:$arch_lifecycle_version"
 
-    testImplementation 'com.google.truth:truth:' + truth_tersion
+    testImplementation 'com.google.truth:truth:' + truth_version
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0"
 
     // Rx Dependencies
@@ -80,18 +82,37 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
     implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
 
-    androidTestImplementation 'androidx.test.ext:junit:' + runner_version
     androidTestImplementation 'androidx.room:room-testing:' + room_version
     androidTestImplementation "androidx.arch.core:core-testing:$arch_lifecycle_version"
 
+    androidTestImplementation 'org.mockito:mockito-android:2.6.1'
+
+    // Core library
+    androidTestImplementation 'androidx.test:core:' + core_version
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation 'androidx.test.ext:junit:' + runner_version
     androidTestImplementation 'androidx.test:runner:' + runner_version
     androidTestImplementation 'androidx.test:rules:' + runner_version
-    // Optional -- UI testing with Espresso
-    androidTestImplementation 'androidx.test.espresso:espresso-core:' + espresso_version
-    androidTestImplementation 'androidx.test.espresso:espresso-intents:' + espresso_version
-    androidTestImplementation 'com.google.truth:truth:' + truth_tersion
 
-    androidTestImplementation 'org.mockito:mockito-android:2.6.1'
+    // Assertions
+    androidTestImplementation 'androidx.test.ext:junit:' + runner_version
+    androidTestImplementation 'androidx.test.ext:truth:' + runner_version
+    androidTestImplementation 'com.google.truth:truth:' + truth_version
+
+    // Espresso dependencies
+    androidTestImplementation 'androidx.test.espresso:espresso-core:' + espresso_version
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:' + espresso_version
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:' + espresso_version
+    androidTestImplementation 'androidx.test.espresso:espresso-accessibility:' + espresso_version
+    androidTestImplementation 'androidx.test.espresso:espresso-web:' + espresso_version
+    androidTestImplementation 'androidx.test.espresso.idling:idling-concurrent:' + espresso_version
+
+    // The following Espresso dependency can be either "implementation"
+    // or "androidTestImplementation", depending on whether you want the
+    // dependency to appear on your APK's compile classpath or the test APK
+    // classpath.
+    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:' + espresso_version
 
 
 }

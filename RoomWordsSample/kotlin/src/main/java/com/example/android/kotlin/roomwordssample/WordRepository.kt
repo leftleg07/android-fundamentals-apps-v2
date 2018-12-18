@@ -38,6 +38,9 @@ class WordRepository private constructor(private val wordDao: WordDao) {
                     val dao = WordRoomDatabase.getDatabase(context).wordDao()
                     buildRepository(dao).also { INSTANCE = it } }
 
+        /**
+         * using only test case
+         */
         @VisibleForTesting(otherwise = VisibleForTesting.NONE)
         fun getInstance(dao: WordDao) = INSTANCE
                 ?: synchronized(this) { buildRepository(dao).also { INSTANCE = it } }
